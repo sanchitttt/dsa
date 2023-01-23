@@ -55,7 +55,7 @@ function copyLinkedListWithRandomPointer(head) {
         copyHead = copyHead.next;
     }
 
-    return temp;
+    return temp
 }
 
 

@@ -24,9 +24,12 @@ function detectAndRemoveCycle(head) {
     let slow = head;
     let fast = head;
 
+    let firstPointer;
+
     while (fast && fast.next) {
         if (slow === fast) {
             cycleExists = true;
+            firstPointer = slow;
             break;
         }
         slow = slow.next;
@@ -37,27 +40,23 @@ function detectAndRemoveCycle(head) {
         return false;
     }
 
-    let map = new Map();
+    let secondPointer = head;
 
-    let currHead = head;
-
-    while (currHead) {
-        if (!map.has(currHead.next.val)) {
-            map.set(currHead.val, [currHead]);
-        }
-        else {
-            let value = map.get(currHead.next.val);
-            for (let i = 0; i < value.length; i++) {
-                if (currHead.next === value[i]) {
-                    currHead.next = null;
-                }
-            }
+    while (true) {
+        if (firstPointer === secondPointer) {
             break;
         }
-        currHead = currHead.next;
+        firstPointer = firstPointer.next;
+        secondPointer = secondPointer.next;
     }
-    printList(a);
-    return true;
+
+    while (true) {
+        if (firstPointer.next === secondPointer) {
+            firstPointer.next = null;
+            return true;
+        }
+        firstPointer = firstPointer.next;
+    }
 
 }
 

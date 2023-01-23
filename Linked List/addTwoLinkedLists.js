@@ -1,5 +1,3 @@
-
-
 class ListNode {
     constructor(val) {
         this.val = val;
