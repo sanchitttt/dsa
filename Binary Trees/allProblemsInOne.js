@@ -401,7 +401,6 @@ function buildTree(inorder, inorderStarting, inorderEnding, postorder, postOrder
     newNode.right = buildTree(inorder, inorderRoot + 1, inorderEnding, postorder, postOrderStarting, + numsLeft, postOrderEnding - 1, map);
 
     return newNode;
-
 }
 function constructBinaryTreeFromPostorderAndInorderTraversal(postorder, inorder) {
     if (!postorder.length || !inorder.length) return null;
